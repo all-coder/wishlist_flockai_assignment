@@ -1,5 +1,6 @@
 from database import db
 from models.user_model import User
+from models.association import wishlist_users
 from werkzeug.security import check_password_hash
 from werkzeug.security import generate_password_hash
 
@@ -22,3 +23,13 @@ def login_user(email, password):
 def get_all_users():
     users = db.session.query(User.id, User.name).all()
     return [{'id': uid, 'name': name} for uid, name in users]
+
+
+def get_user_wishlist_ids(user_id):
+    rows = (
+        db.session.query(wishlist_users.c.wishlist_id)
+        .filter(wishlist_users.c.user_id == user_id)
+        .all()
+    )
+    return [r[0] for r in rows]
+

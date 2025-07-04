@@ -16,8 +16,8 @@ def create_wishlist(name=None, user_count=0, description=None):
     return None
 
 def get_all_wishlists():
-    wishlists = db.session.query(Wishlist.id, Wishlist.name, Wishlist.user_count).all()
-    return [{'id': wid, 'name': name, 'user_count': user_count} for wid, name, user_count in wishlists]
+    wishlists = db.session.query(Wishlist).all()
+    return [w.to_dict() for w in wishlists] if wishlists else []
 
 def add_user_to_wishlist(wishlist_id, user_id):
     wishlist = Wishlist.query.get(wishlist_id)

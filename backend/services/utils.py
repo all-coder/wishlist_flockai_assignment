@@ -12,3 +12,4 @@ def check_wishlist_id(id):
     if(id is None):
         return False
     return db.session.query(Wishlist.id).filter_by(id=id).first() is not None;
+

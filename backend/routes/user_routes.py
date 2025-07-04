@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from services.user_service import create_user,login_user,get_all_users
+from services.user_service import create_user,login_user,get_all_users,get_user_wishlist_ids
 
 user_route = Blueprint('user', __name__, url_prefix='/user')
 
@@ -37,4 +37,9 @@ def login_user_route():
 def get_all_users_route():
     users = get_all_users()
     return jsonify(users), 200
+
+@user_route.route("/<int:user_id>/wishlists", methods=['GET'])
+def get_user_wishlist_ids_route(user_id):
+    wishlist_ids = get_user_wishlist_ids(user_id)
+    return jsonify({'wishlist_ids': wishlist_ids})
 
