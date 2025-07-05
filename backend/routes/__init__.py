@@ -4,7 +4,9 @@ from routes.user_routes import user_route
 from routes.wishlist_routes import wishlist_route
 from routes.item_routes import item_route
 from flask_cors import CORS
+from dotenv import load_dotenv
 
+load_dotenv()
 def create_app():
     app = Flask(__name__)
     # allowing for CORS
