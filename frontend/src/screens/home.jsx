@@ -5,15 +5,17 @@ import ItemCard from "../components/item_card";
 import WishlistModal from "../components/wishlist_modal";
 import ItemModal from "../components/item_modal";
 import useWishlists from "../hooks/useWishlist";
-import { loadAllUsers,loadUserWishlists } from "../services/user_service";
+import { loadAllUsers, loadUserWishlists } from "../services/user_service";
 import {
   createNewWishlist,
   loadAllItemsWishlist,
   loadAllWishlists,
 } from "../services/wishlist_service";
+import { useLocation } from "react-router-dom";
 
 export default function Home() {
-  const [id] = useState(1);
+  const location = useLocation();
+  const [id] = useState(location.state?.userId || 1);
   const [users, setUsers] = useState([]);
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
@@ -160,9 +162,22 @@ export default function Home() {
 
       <div className="w-80 h-[92vh] bg-white rounded-2xl shadow-2xl p-6 flex flex-col justify-start space-y-4">
         <div className="mb-5">
-          <p className="text-lg font-semibold text-gray-700">John Doe</p>
-          <p className="text-sm text-gray-500">john@example.com</p>
+          {(() => {
+            const user = users.find(u => u.id === id);
+            return user ? (
+              <>
+                <p className="text-lg font-semibold text-gray-700">{user.name}</p>
+                <p className="text-sm text-gray-500">{user.email}</p>
+              </>
+            ) : (
+              <>
+                <p className="text-lg font-semibold text-gray-700">Unknown User</p>
+                <p className="text-sm text-gray-500">unknown@example.com</p>
+              </>
+            );
+          })()}
         </div>
+
         <button
           onClick={() => setShowModal(true)}
           className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded transition"
