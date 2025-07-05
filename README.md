@@ -1,6 +1,6 @@
 # Wishlist Manager
 
-A lightweight web application to create, manage, and share wishlists. Built with a React frontend and Flask backend, it supports user authentication, item uploads with image previews, and real-time wishlist updates.
+A lightweight web application to create, manage, and share wishlists. Built with a React frontend and Flask backend, it supports user authentication, item uploads with images, and real-time wishlist updates.
 
 ---
 
@@ -31,7 +31,7 @@ For now, the image path is hardcoded, but the file picker works and all core fea
 **Backend:**
 - Python (Flask)
 - SQLAlchemy
-- SQLite or PostgreSQL
+- PostgreSQL
 
 ---
 
