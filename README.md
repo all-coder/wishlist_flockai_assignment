@@ -41,7 +41,6 @@ For now, the image path is hardcoded, but the file picker works and all core fea
 
 **Frontend:**
 - ReactJS
-- React Router
 - Tailwind CSS
 
 **Backend:**
