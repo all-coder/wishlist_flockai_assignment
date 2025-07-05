@@ -24,8 +24,37 @@ export async function apiPost(endpoint, data) {
   return res.json();
 }
 
+export async function apiDelete(endpoint) {
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
+    method: "DELETE",
+    headers: {
+      "Accept": "application/json",
+    },
+  });
+  if (!res.ok) throw new Error(`DELETE ${endpoint} failed`);
+  return res.json();
+}
+
+export async function apiUpdate(endpoint, data) {
+  const res = await fetch(`${BASE_URL}${endpoint}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) throw new Error(`PUT ${endpoint} failed`);
+  return res.json();
+}
+
+
 export function getFormattedDate(isoString) {
   const date = new Date(isoString);
   const options = { year: "numeric", month: "long", day: "numeric" };
   return `Created on ${date.toLocaleDateString("en-US", options)}`;
+}
+
+export default function createObjectURL(file) {
+  return URL.createObjectURL(file);
 }

@@ -21,8 +21,8 @@ def login_user(email, password):
     return None
 
 def get_all_users():
-    users = db.session.query(User.id, User.name).all()
-    return [{'id': uid, 'name': name} for uid, name in users]
+    users = db.session.query(User.id, User.name,User.email).all()
+    return [{'id': uid, 'name': name,'email':email} for uid, name, email in users]
 
 
 def get_user_wishlist_ids(user_id):

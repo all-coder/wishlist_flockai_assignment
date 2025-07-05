@@ -1,6 +1,7 @@
 from database import db
 from models.user_model import User
 from models.wishlist_model import Wishlist
+from models.item_model import Item
     # id = db.Column(db.Integer, primary_key=True)
     # name = db.Column(db.String(120), nullable=False)
     # user_count = db.Column(db.Integer, default=0)
@@ -32,3 +33,7 @@ def add_user_to_wishlist(wishlist_id, user_id):
         db.session.commit()
 
     return wishlist
+
+def get_wishlist_items_by_id(wishlist_id):
+    items = db.session.query(Item).filter_by(wishlist_id=wishlist_id).all()
+    return [item.to_dict() for item in items] if items else []

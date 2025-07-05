@@ -1,11 +1,10 @@
-import { apiGet,apiPost } from "./util";
+import { apiGet,apiPost,apiDelete, apiUpdate} from "./util";
 
-export async function createNewItem(name,image,description,user_id,wishlist_id){
+export async function createNewItem(name,image,user_id,wishlist_id){
     try{
         const response = apiPost("/item/create",{
             name:name,
             image:image,
-            description:description,
             user_id:user_id,
             wishlist_id:wishlist_id
         });
@@ -25,3 +24,27 @@ export async function loadAllItems(){
         return [];
     }
 }
+
+export async function deleteItem(item_id){
+    try{
+        const response = apiDelete(`/item/delete/${item_id}`);
+        return response;
+    }catch(error){
+        console.log(error);
+        throw error;
+    }
+}
+
+export async function updateItem(item_id, name, image) {
+  try {
+    const response = await apiUpdate(`/item/update/${item_id}`, {
+      name: name,
+      image: image,
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
+

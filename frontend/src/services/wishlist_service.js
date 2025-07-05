@@ -37,3 +37,14 @@ export async function addUserToWishlist(user_id, wishlist_id) {
     return null;
   }
 }
+
+
+export async function loadAllItemsWishlist(wishlist_id){
+    try{
+        const items = await apiGet(`/wishlist/${wishlist_id}`);
+        return items;
+    }catch(error){
+      console.log(error);
+      return [];
+    }
+}

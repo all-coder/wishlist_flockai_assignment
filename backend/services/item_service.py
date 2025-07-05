@@ -29,5 +29,24 @@ def get_items_by_user_id(user_id=None):
         return [items.to_dict() for item in items]
     return None
 
+# deletes an item by its id
+def delete_item_by_id(item_id=None):
+    if item_id:
+        item = db.session.query(Item).filter_by(id=item_id).first()
+        if item:
+            db.session.delete(item)
+            db.session.commit()
+            return True
+    return False
 
-        
+def update_item_by_id(item_id=None, name=None, image=None):
+    if item_id:
+        item = db.session.query(Item).filter_by(id=item_id).first()
+        if item:
+            if name:
+                item.name = name
+            if image:
+                item.image = image
+            db.session.commit()
+            return item.to_dict()
+    return None
