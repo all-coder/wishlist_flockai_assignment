@@ -5,18 +5,18 @@ A lightweight web application to create, manage, and share wishlists. Built with
 ---
 ## How does it look?
 
-<table>
+<table style="width: 100%;">
   <tr>
-    <td><img src="assets/1.png" width="200"/></td>
-    <td><img src="assets/2.png" width="200"/></td>
+    <td style="width: 50%;"><img src="assets/1.png" style="width: 100%; object-fit: contain;" /></td>
+    <td style="width: 50%;"><img src="assets/2.png" style="width: 100%; object-fit: contain;" /></td>
   </tr>
   <tr>
-    <td><img src="assets/3.png" width="200"/></td>
-    <td><img src="assets/4.png" width="200"/></td>
+    <td style="width: 50%;"><img src="assets/3.png" style="width: 100%; object-fit: contain;" /></td>
+    <td style="width: 50%;"><img src="assets/4.png" style="width: 100%; object-fit: contain;" /></td>
   </tr>
   <tr>
-    <td><img src="assets/5.png" width="200"/></td>
-    <td><img src="assets/6.png" width="200"/></td>
+    <td style="width: 50%;"><img src="assets/5.png" style="width: 100%; object-fit: contain;" /></td>
+    <td style="width: 50%;"><img src="assets/6.png" style="width: 100%; object-fit: contain;" /></td>
   </tr>
 </table>
 
@@ -40,9 +40,9 @@ For now, the image path is hardcoded, but the file picker works and all core fea
 ## Tech Stack
 
 **Frontend:**
-- React
+- ReactJS
 - React Router
-- Tailwind CSS (or custom CSS)
+- Tailwind CSS
 
 **Backend:**
 - Python (Flask)
