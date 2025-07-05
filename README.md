@@ -43,9 +43,7 @@ For now, the image path is hardcoded, but the file picker works and all core fea
 
 2. Open pgAdmin and connect to your local PostgreSQL server.
 
-3. Create a new database (e.g., `wishlist_db`).
-
-4. Create a table named `flock`.
+3. Create a new database - `flock`.
 
 ---
 
